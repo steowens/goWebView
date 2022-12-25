@@ -76,6 +76,7 @@ func main() {
 }
 
 func launchWindow(title string) webview.WebView {
+	defer wg.Done()
 	w := webview.New(false)
 	defer w.Destroy()
 	w.SetTitle(title)
