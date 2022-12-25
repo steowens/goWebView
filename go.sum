@@ -1,0 +1,4 @@
+github.com/webview/webview v0.0.0-20221220082822-77e021440a0f h1:whomWpMJmyN9uHtIjBIE2jmjN8ZccngNh3kCg4G16FA=
+github.com/webview/webview v0.0.0-20221220082822-77e021440a0f/go.mod h1:rpXAuuHgyEJb6kXcXldlkOjU6y4x+YcASKKXJNUhh0Y=
+golang.org/x/sys v0.3.0 h1:w8ZOecv6NaNa/zC8944JTU3vz4u6Lagfk4RPQxv92NQ=
+golang.org/x/sys v0.3.0/go.mod h1:oPkhp1MJrh7nUepCBck5+mAzfO9JrbApNNgaTdGDITg=
