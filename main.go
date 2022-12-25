@@ -4,6 +4,7 @@ import "C"
 import (
 	"log"
 	"sync"
+	"unsafe"
 
 	"github.com/webview/webview"
 )
@@ -69,19 +70,28 @@ func init() {
 
 func main() {
 	log.Println("Hello")
+
+	view1 := createWindow("Window 1", nil)
+	defer view1.Destroy()
+
+	view2 := createWindow("Window 2", view1.Window())
+	defer view2.Destroy()
 	wg.Add(2)
-	go launchWindow("Window 1")
-	go launchWindow("Window 2")
+	runWindow(view1)
+	runWindow(view2)
 	wg.Wait()
 }
 
-func launchWindow(title string) webview.WebView {
-	defer wg.Done()
+func createWindow(title string, parent unsafe.Pointer) webview.WebView {
+
 	w := webview.New(false)
-	defer w.Destroy()
 	w.SetTitle(title)
 	w.SetSize(480, 320, WEBVIEW_HINT_NONE)
 	w.SetHtml("Thanks for using webview!")
-	w.Run()
 	return w
+}
+
+func runWindow(w webview.WebView) {
+	defer wg.Done()
+	w.Run()
 }
